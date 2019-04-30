@@ -4,23 +4,23 @@ const fs = require('fs')
 const path = require('path')
 const assert = require('assert')
 const MarkdownIt = require('markdown-it')
-const meta = require('../../')
+const meta = require('../../lib/index').default([['---'], ['---']])
 
-function fixture(name) {
+function fixture (name) {
   return fs.readFileSync(path.join(__dirname, 'fixtures', name), 'utf8')
 }
 
 describe('Meta', () => {
-    // Make new instance
+  // Make new instance
   const md = new MarkdownIt({
     html: true
   })
-    // Add markdown-it-meta
+  // Add markdown-it-meta
   md.use(meta)
 
   it('should render the document and meta', (done) => {
     const mdText = fixture('../../fixtures/0.0.1.md')
-    const renderedDocument =  md.render(mdText)
+    const renderedDocument = md.render(mdText)
 
     const expectedHtml = [
       '<hello>',
@@ -35,9 +35,9 @@ describe('Meta', () => {
       ''
     ].join('\n')
 
-    assert.equal(expectedHtml, renderedDocument)
-    assert.equal(md.meta.title, 'Homepage Hello World')
-    assert.equal(md.meta.keywords, 'proxy-engine, amazing, does html')
+    assert.strictEqual(expectedHtml, renderedDocument)
+    assert.strictEqual(md.meta.title, 'Homepage Hello World')
+    assert.strictEqual(md.meta.keywords, 'proxy-engine, amazing, does html')
 
     done()
   })

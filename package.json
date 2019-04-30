@@ -1,27 +1,30 @@
 {
-  "name": "markdown-it-meta",
+  "name": "md-it-meta",
   "version": "0.0.1",
   "scripts": {
-    "test": "eslint --fix . && mocha"
+    "build": "tsc -p ./",
+    "test": "mocha"
   },
   "dependencies": {
-    "js-yaml": "^3.8.1"
+    "js-yaml": "^3.8.1",
+    "tslib": "^1.9.3"
   },
   "description": "Markdown-it Metadata as yaml for markdown documents",
-  "main": "index.js",
+  "main": "./lib/index.js",
   "keywords": [
     "markdown-it",
     "yaml",
     "metadata",
     "markdown"
   ],
-  "author": "scott-wyatt",
+  "author": "iamcco",
   "license": "MIT",
   "devDependencies": {
+    "@types/js-yaml": "^3.12.1",
+    "@types/markdown-it": "^0.0.7",
     "assert": "^1.4.1",
-    "eslint": "^3.19.0",
-    "eslint-config-trails": "^3.0.0",
     "markdown-it": "^8.4.0",
-    "mocha": "^2.4.5"
+    "mocha": "^2.4.5",
+    "typescript": "^3.4.5"
   }
 }
